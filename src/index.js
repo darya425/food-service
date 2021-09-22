@@ -15,33 +15,28 @@ body.classList.add(Theme.LIGHT);
 checkbox.addEventListener('change', onChangeTheme);
 
 if (userTheme) {
-    body.classList.add(userTheme);
+  body.classList.add(userTheme);
 }
 
 if (userTheme === Theme.DARK) {
-        checkbox.checked = true;
-    }
-
-// кнопка
-function onChangeTheme(evt) {
-    body.classList.replace(Theme.LIGHT, Theme.DARK);
-
-    if (!evt.currentTarget.checked) {
-        body.classList.replace(Theme.DARK, Theme.LIGHT);
-    }
-
-    const bgColor = body.classList;
-    localStorage.setItem('theme', bgColor);
+  checkbox.checked = true;
 }
 
+function onChangeTheme(evt) {
+  body.classList.replace(Theme.LIGHT, Theme.DARK);
 
-// создание разметки
+  if (!evt.currentTarget.checked) {
+    body.classList.replace(Theme.DARK, Theme.LIGHT);
+  }
+
+  const bgColor = body.classList;
+  localStorage.setItem('theme', bgColor);
+}
+
 const listMenu = document.querySelector('.js-menu');
 const cardsMarkup = createListMenu(menuCards);
 listMenu.insertAdjacentHTML('beforeend', cardsMarkup);
 
 function createListMenu(cards) {
-    return cards.map(cardsTpl).join('');
+  return cards.map(cardsTpl).join('');
 }
-
-
